@@ -9,13 +9,13 @@ import {
   Heading,
   IconButton,
   Link,
-  useDisclousre
+  useDisclosure
 } from "@chakra-ui/react";
 import { memo, VFC } from "react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 
 export const Header: VFC = memo(() => {
-  const { isOpen, onOpen, onClose } = useDisclousre();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
       <Flex
@@ -54,10 +54,10 @@ export const Header: VFC = memo(() => {
       <Drawer placement="left" size="xs" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay>
           <DrawerContent>
-            <DrawerBody>
-              <Button>TOP</Button>
-              <Button>ユーザー一覧</Button>
-              <Button>設定</Button>
+            <DrawerBody p={0} bg="gray.100">
+              <Button w="100%">TOP</Button>
+              <Button w="100%">ユーザー一覧</Button>
+              <Button w="100%">設定</Button>
             </DrawerBody>
           </DrawerContent>
         </DrawerOverlay>
