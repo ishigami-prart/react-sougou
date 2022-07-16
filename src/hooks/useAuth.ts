@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { User } from "../api/user";
@@ -26,5 +26,5 @@ export const useAuth = () => {
     },
     [history]
   );
-  return { login };
+  return { login, loading };
 };
