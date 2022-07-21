@@ -2,7 +2,7 @@ import axios from "axios";
 import { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import { User } from "../api/user";
+import { User } from "../types/api/user";
 import { useMessage } from "./useMessage";
 
 export const useAuth = () => {
