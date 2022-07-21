@@ -1,4 +1,4 @@
-import { Spinner, Wrap, WrapItem } from "@chakra-ui/react";
+import { Center, Spinner, Wrap, WrapItem } from "@chakra-ui/react";
 import { memo, useEffect, VFC } from "react";
 
 import { UserCard } from "../organisms/user/UserCard";
@@ -10,7 +10,9 @@ export const UserManagement: VFC = memo(() => {
   return (
     <>
       {true ? (
-        <Spinner />
+        <Center height="100vh">
+          <Spinner />
+        </Center>
       ) : (
         <Wrap p={{ base: 4, md: 10 }}>
           <WrapItem>
