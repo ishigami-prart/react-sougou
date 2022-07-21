@@ -8,7 +8,7 @@ import { useMessage } from "./useMessage";
 export const useAllUsers = () => {
   const { showMessage } = useMessage();
   const [loading, setloading] = useState<boolean>(false);
-  const [users, setUsers] = useState<Array<User>>();
+  const [users, setUsers] = useState<Array<User>>([]);
 
   const getUsers = useCallback(() => {
     setloading(true);

@@ -9,19 +9,21 @@ export const UserManagement: VFC = memo(() => {
   useEffect(() => getUsers(), []);
   return (
     <>
-      {true ? (
+      {loading ? (
         <Center height="100vh">
           <Spinner />
         </Center>
       ) : (
         <Wrap p={{ base: 4, md: 10 }}>
-          <WrapItem>
-            <UserCard
-              imageUrl="https://source.unsplash.com/random"
-              userName="じゃけえ"
-              fullName="Takumi Okada"
-            />
-          </WrapItem>
+          {users?.map((user) => (
+            <WrapItem key={user.id}>
+              <UserCard
+                imageUrl="https://source.unsplash.com/random"
+                userName="じゃけえ"
+                fullName="Takumi Okada"
+              />
+            </WrapItem>
+          ))}
         </Wrap>
       )}
     </>
