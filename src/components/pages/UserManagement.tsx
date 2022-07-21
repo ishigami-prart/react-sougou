@@ -37,7 +37,7 @@ export const UserManagement: VFC = memo(() => {
           ))}
         </Wrap>
       )}
-      <Modal isOpen>
+      <Modal isOpen={isOpen}>
         <ModalOverlay />
         <ModalContent>
           <p>テスト</p>
