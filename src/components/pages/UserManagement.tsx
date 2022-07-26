@@ -29,10 +29,13 @@ export const UserManagement: VFC = memo(() => {
   const { onSlectUser, selectUser } = useSlelectUser();
   console.log(selectUser);
   useEffect(() => getUsers(), []);
-  const onClickUser = useCallback((id: number) => {
-    console.log(id);
-    onSlectUser({ id, users, onOpen });
-  }, []);
+  const onClickUser = useCallback(
+    (id: number) => {
+      console.log(id);
+      onSlectUser({ id, users, onOpen });
+    },
+    [users, onSlectUser, onOpen]
+  );
   return (
     <>
       {loading ? (
@@ -54,7 +57,7 @@ export const UserManagement: VFC = memo(() => {
           ))}
         </Wrap>
       )}
-      <UserDetailModal isOpen={isOpen} onClose={onClose} />
+      <UserDetailModal user={selectUser} isOpen={isOpen} onClose={onClose} />
     </>
   );
 });
