@@ -3,9 +3,11 @@ import { createContext, Dispatch, SetStateAction } from "react";
 import { User } from "../types/api/user";
 import { ReactNode, useState } from "react";
 
+type LoginUser = User & { isAdmin: boolean };
+
 export type LoginUserContextType = {
-  loginUser: User | null;
-  setLoginUser: Dispatch<SetStateAction<User | null>>;
+  loginUser: (User & { isAdmin: boolean }) | null;
+  setLoginUser: Dispatch<LoginUser | null>;
 };
 
 export const LoginUserContext = createContext<LoginUserContextType>(
@@ -14,7 +16,7 @@ export const LoginUserContext = createContext<LoginUserContextType>(
 
 export const LoginUserProvider = (props: { children: ReactNode }) => {
   const { children } = props;
-  const [loginUser, setLoginUser] = useState<User | null>(null);
+  const [loginUser, setLoginUser] = useState<LoginUser | null>(null);
   return (
     <LoginUserContext.Provider value={{ loginUser, setLoginUser }}>
       {children}
