@@ -24,6 +24,7 @@ export const useAuth = () => {
             history.push("/home");
           } else {
             showMessage({ title: "ユーザーがみつかりません", status: "error" });
+            setLoading(false);
           }
         })
         .catch(() => {
