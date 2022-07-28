@@ -1,4 +1,4 @@
-import { memo, VFC } from "react";
+import { memo, useEffect, useState, VFC } from "react";
 
 import {
   FormControl,
@@ -24,6 +24,18 @@ type Props = {
   onClose: () => void;
 };
 
+const [username, setUsername] = useState("");
+const [name, setName] = useState("");
+const [email, setEmail] = useState("");
+const [phone, setPhone] = useState("");
+
+useEffect(() => {
+  setUsername();
+  setName();
+  setEmail();
+  setPhone();
+}, []);
+
 export const UserDetailModal: VFC<Props> = memo((props) => {
   const { user, isOpen, isAdmin = false, onClose } = props;
   const onClickUpdate = () => alert();
@@ -35,32 +47,34 @@ export const UserDetailModal: VFC<Props> = memo((props) => {
       motionPreset="slideInBottom"
     >
       <ModalOverlay />
-      <ModalContent pb={6}>
+      <ModalContent pb={2}>
         <ModalHeader>ユーザー詳細</ModalHeader>
         <ModalCloseButton />
         <ModalBody mx={4}>
           <Stack spacing={4}>
             <FormControl>
               <FormLabel>名前</FormLabel>
-              <Input value={user?.username} isReadOnly />
+              <Input value={user?.username} isReadOnly={!isAdmin} />
             </FormControl>
             <FormControl>
               <FormLabel>フルネームy</FormLabel>
-              <Input value={user?.name} isReadOnly />
+              <Input value={user?.name} isReadOnly={!isAdmin} />
             </FormControl>
             <FormControl>
               <FormLabel>MailMail</FormLabel>
-              <Input value={user?.email} isReadOnly />
+              <Input value={user?.email} isReadOnly={!isAdmin} />
             </FormControl>
             <FormControl>
               <FormLabel>TELTEL</FormLabel>
-              <Input value={user?.phone} isReadOnly />
+              <Input value={user?.phone} isReadOnly={!isAdmin} />
             </FormControl>
           </Stack>
         </ModalBody>
-        <ModalFooter>
-          <PrimaryButton onClick={onClickUpdate}>更新</PrimaryButton>
-        </ModalFooter>
+        {isAdmin && (
+          <ModalFooter>
+            <PrimaryButton onClick={onClickUpdate}>更新</PrimaryButton>
+          </ModalFooter>
+        )}
       </ModalContent>
     </Modal>
   );
