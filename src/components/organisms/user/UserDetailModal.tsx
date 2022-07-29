@@ -24,19 +24,19 @@ type Props = {
   onClose: () => void;
 };
 
-const [username, setUsername] = useState("");
-const [name, setName] = useState("");
-const [email, setEmail] = useState("");
-const [phone, setPhone] = useState("");
-
-useEffect(() => {
-  setUsername();
-  setName();
-  setEmail();
-  setPhone();
-}, []);
-
 export const UserDetailModal: VFC<Props> = memo((props) => {
+  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+
+  useEffect(() => {
+    setUsername(user?.username ?? "");
+    setName(user?.name ?? "");
+    setEmail(user?.email ?? "");
+    setPhone(user?.username ?? "");
+  }, [user]);
+
   const { user, isOpen, isAdmin = false, onClose } = props;
   const onClickUpdate = () => alert();
   return (
@@ -54,19 +54,19 @@ export const UserDetailModal: VFC<Props> = memo((props) => {
           <Stack spacing={4}>
             <FormControl>
               <FormLabel>名前</FormLabel>
-              <Input value={user?.username} isReadOnly={!isAdmin} />
+              <Input value={username} isReadOnly={!isAdmin} />
             </FormControl>
             <FormControl>
               <FormLabel>フルネームy</FormLabel>
-              <Input value={user?.name} isReadOnly={!isAdmin} />
+              <Input value={name} isReadOnly={!isAdmin} />
             </FormControl>
             <FormControl>
               <FormLabel>MailMail</FormLabel>
-              <Input value={user?.email} isReadOnly={!isAdmin} />
+              <Input value={email} isReadOnly={!isAdmin} />
             </FormControl>
             <FormControl>
               <FormLabel>TELTEL</FormLabel>
-              <Input value={user?.phone} isReadOnly={!isAdmin} />
+              <Input value={phone} isReadOnly={!isAdmin} />
             </FormControl>
           </Stack>
         </ModalBody>
