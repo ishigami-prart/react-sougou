@@ -6,7 +6,7 @@ import { ReactNode, useState } from "react";
 type LoginUser = User & { isAdmin: boolean };
 
 export type LoginUserContextType = {
-  loginUser: (User & { isAdmin: boolean }) | null;
+  loginUser: LoginUser | null;
   setLoginUser: Dispatch<LoginUser | null>;
 };
 

@@ -19,7 +19,6 @@ export const UserManagement: VFC = memo(() => {
   const { getUsers, users, loading } = useAllUsers();
   const { onSlectUser, selectUser } = useSlelectUser();
   const { loginUser } = useLoginUser();
-  console.log(loginUser);
 
   console.log(selectUser);
   useEffect(() => getUsers(), []);
@@ -51,7 +50,12 @@ export const UserManagement: VFC = memo(() => {
           ))}
         </Wrap>
       )}
-      <UserDetailModal user={selectUser} isOpen={isOpen} onClose={onClose} />
+      <UserDetailModal
+        isAdmin={loginUser?.isAdmin}
+        user={selectUser}
+        isOpen={isOpen}
+        onClose={onClose}
+      />
     </>
   );
 });
